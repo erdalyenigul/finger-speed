@@ -1,6 +1,6 @@
-# Typing Speed Test
+# Finger Speed
 
-Typing Speed Tes is a modern Vue 3 + Vite application that measures users' typing speed and accuracy. Users can see statistics on correct words, incorrect letters, and total errors based on the text they type within a set time.
+Finger Speed is a modern Vue 3 + Vite application that measures users' typing speed and accuracy. Users can see statistics on correct words, incorrect letters, and total errors based on the text they type within a set time.
 
 ## Features
 - **Speed Test:** Measures the number of words typed by the user within a specific time frame.
@@ -14,8 +14,8 @@ Typing Speed Tes is a modern Vue 3 + Vite application that measures users' typin
 Clone the project to your local machine:
 
 ```bash
-git clone https://github.com/erdalyenigul/typing-test.git
-cd typing-test
+git clone https://github.com/erdalyenigul/finger-speed.git
+cd finger-speed
 ```
 
 Install dependencies:
