@@ -9,7 +9,13 @@
     </div>
 
     <div class="text-display">
-      {{ currentText }}
+      <span
+        v-for="(char, index) in currentText"
+        :key="index"
+        :class="highlightClass(index)"
+      >
+        {{ char }}
+      </span>
     </div>
 
     <textarea
@@ -38,12 +44,8 @@
       <div class="result-detail">
         Wrong Chars: <span class="error">{{ wrongChars }}</span>
       </div>
-      <div class="result-detail">
-        Final WPM: {{ finalWpm }} word/minute
-      </div>
-      <div class="result-detail">
-        Final Accuracy: {{ finalAccuracy }}%
-      </div>
+      <div class="result-detail">Final WPM: {{ finalWpm }} word/minute</div>
+      <div class="result-detail">Final Accuracy: {{ finalAccuracy }}%</div>
     </div>
 
     <button
@@ -118,6 +120,15 @@ function resetTest() {
   getRandomText();
 }
 
+function highlightClass(index) {
+  if (index < userInput.value.length) {
+    return userInput.value[index] === currentText.value[index]
+      ? "correct"
+      : "error";
+  }
+  return "";
+}
+
 function finishTest() {
   isFinished.value = true;
   isActive.value = false;
@@ -151,16 +162,16 @@ function handleInput() {
   if (!isActive.value) {
     startTest();
   }
-  if (userInput.value.length >= currentText.value.length) {
+  if (userInput.value.length >= currentText.value.length - 1) {
     finishTest();
   }
 }
 
 const getRandomText = async () => {
   try {
-    const response = await fetch("https://api.quotable.io/random?minLength=150&maxLength=180");
+    const response = await fetch("https://bible-api.com/data/web/random");
     const data = await response.json();
-    text.value = data.content;
+    text.value = data.random_verse.text.replace(/["`:;“”‘’]/g, '');
   } catch (error) {
     console.error("Hata oluştu:", error);
   }
