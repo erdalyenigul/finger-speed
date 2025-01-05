@@ -13,6 +13,5 @@ import TypingTest from "./components/TypingTest.vue";
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
 }
 </style>
