@@ -160,8 +160,6 @@ const getRandomText = async () => {
   try {
     const response = await fetch("https://api.quotable.io/random?minLength=150&maxLength=180");
     const data = await response.json();
-    console.log("data");
-    console.log(data);
     text.value = data.content;
   } catch (error) {
     console.error("Hata oluştu:", error);
